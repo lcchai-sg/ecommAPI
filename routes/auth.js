@@ -31,8 +31,6 @@ router.post("/login", async (req, res) => {
             process.env.PASSPHRASE
         );
         const opassword = hashPassword.toString(CryptoJS.enc.Utf8);
-        console.log("opassword : ", opassword);
-        console.log("password : ", req.body.password);
         if (opassword != req.body.password)
             return res.status(401).json({ message: "Invalid credentials !" });
         const accessToken = jwt.sign(
